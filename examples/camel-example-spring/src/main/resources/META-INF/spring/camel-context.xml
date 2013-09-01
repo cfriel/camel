@@ -23,10 +23,17 @@
          http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
   <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
-    <package>org.apache.camel.example.spring</package>
+    <package>com.greenlight.integration</package>
   </camelContext>
 
-  <!-- lets configure the default ActiveMQ broker URL -->
+  <bean id="myDb" class="com.mongodb.Mongo">
+    <constructor-arg index="0" value="localhost"/>
+  </bean>
+
+  <bean id="meteor" class="com.mongodb.Mongo">
+    <constructor-arg index="0" value="127.0.0.1:3002"/>
+  </bean>
+
   <bean id="jms" class="org.apache.camel.component.jms.JmsComponent">
     <property name="connectionFactory">
       <bean class="org.apache.activemq.ActiveMQConnectionFactory">

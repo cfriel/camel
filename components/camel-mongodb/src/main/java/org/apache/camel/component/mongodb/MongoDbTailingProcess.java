@@ -72,6 +72,7 @@ public class MongoDbTailingProcess implements Runnable {
             LOG.info("Starting MongoDB Tailable Cursor consumer, binding to collection: {}", "db: " + dbCol.getDB() + ", col: " + dbCol.getName());
         }
 
+
         if (dbCol.getStats().getInt(CAPPED_KEY) != 1) {
             throw new CamelMongoDbException("Tailable cursors are only compatible with capped collections, and collection " + dbCol.getName()
                     + " is not capped");
